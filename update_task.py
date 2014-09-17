@@ -14,8 +14,9 @@ if __name__=="__main__":
         taskdescr = '{}: {}'.format(courseid, asg.name)
         if not any([taskdescr in t.values() for t in tasks]):
             tw.task_add( taskdescr,
-                        {'project' : 'homework:'+courseid,
-                         'due' : asg.due_datetime })
+                        project='homework:'+courseid,
+                        due=asg.due_datetime )
+            print("Task due: {}".format(int(asg.due_datetime.timestamp())))
             print("taskw: Adding task \"{}\"".format(taskdescr))
         elif asg.handin:
             print("taskw: Moving task \"{}\" completed.".format(taskdescr))
